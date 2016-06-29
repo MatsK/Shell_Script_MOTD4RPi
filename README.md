@@ -6,4 +6,4 @@ Just copy it to "/etc/profile.d/" folder and it will automagically start on ever
 
 ##Example
 
-![alt tag](https://github.com/etxahun/MOTD4RPi/edit/master/path/to/img.png)
+![alt tag](https://github.com/etxahun/MOTD4RPi/edit/master/MOTD_screenshot.jpg)
