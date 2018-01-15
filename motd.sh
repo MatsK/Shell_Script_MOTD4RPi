@@ -24,18 +24,18 @@ function center (){
     str=" $str"
     let spacesLeft=spacesLeft-1
   done
-  
+
   while [ $spacesRight -gt 0 ]; do
     str="$str "
     let spacesRight=spacesRight-1
   done
-  
+
   echo "$str"
 }
 
 function sec2time (){
   local input=$1
-  
+
   if [ $input -lt 60 ]; then
     echo "$input seconds"
   else
@@ -44,23 +44,23 @@ function sec2time (){
     ((hours=input/3600))
     ((input=input%3600))
     ((mins=input/60))
-    
+
     local daysPlural="s"
     local hoursPlural="s"
     local minsPlural="s"
-    
+
     if [ $days -eq 1 ]; then
       daysPlural=""
     fi
-    
+
     if [ $hours -eq 1 ]; then
       hoursPlural=""
     fi
-    
+
     if [ $mins -eq 1 ]; then
       minsPlural=""
     fi
-    
+
     echo "$days day$daysPlural, $hours hour$hoursPlural, $mins minute$minsPlural"
   fi
 }
@@ -132,7 +132,7 @@ label7="$borderBar  $(color $statsLabelColor "Home space..........:") $label7$bo
 label8="$(extend "$(/opt/vc/bin/vcgencmd measure_temp | cut -c "6-9")ºC")"
 label8="$borderBar  $(color $statsLabelColor "CPU Temperature.....:") $label8$borderBar"
 
-localip=$(ifconfig eth0 | grep "inet addr:" | awk '{print substr($2,6)}')
+localip=$(ip route get 8.8.8.8 | head -1 | cut -d' ' -f7)
 publicip=$(wget -q -O - http://icanhazip.com/ | tail)
 label9="$(extend "$localip and $publicip")"
 label9="$borderBar  $(color $statsLabelColor "IP Addresses........:") $label9$borderBar"
